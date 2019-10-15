@@ -9,8 +9,22 @@ cache: npm
 before_install:
    mkdir public
    - ls -la
+   - "npm config set spin false"
+   - npm i -g now
+
+env:
+   - NOW_TOKEN = now public --token=$NOW_TOKEN
+
 
 install:
    - ls -la
    npm install
-   - ls -la
+
+script:
+   - npm run build
+   - npm run test
+
+deploy:
+   provider: script
+   script: bash scripts/deploy.sh
+   skip_cleanup: true
