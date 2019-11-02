@@ -7,18 +7,12 @@ node_js:
 cache: npm
 
 before_install:
-   mkdir public
-   - ls -la
    - "npm config set spin false"
    - npm i -g now
 
-env:
-   - NOW_TOKEN = now public --token=$NOW_TOKEN
-
 
 install:
-   - ls -la
-   npm install
+   - npm install
 
 script:
    - npm run build
